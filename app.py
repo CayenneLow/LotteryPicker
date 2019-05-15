@@ -48,7 +48,7 @@ def display():
         session['seen'] = RNG(min, max, nNums, seenList)
     except Exhausted as e:
         exhausted = True
-    return render_template('display.html', printList=seenList, exhausted=exhausted)
+    return render_template('display.html', printList=seenList, exhausted=exhausted, nNums=nNums)
 
     
 
