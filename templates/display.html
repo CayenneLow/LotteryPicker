@@ -16,14 +16,18 @@
         <h2 class="display-3">Roll {{rolls}}</h2>
         <h3> Press Enter to generate more numbers </h3>
 
-        <div class="numbers">
-            {% for item in printList %}
-                <b>{{item}}</b>
-                {% if loop.index % nNums == 0 %}
-                    <hr> 
-                {% endif %} 
-            {% endfor %}
-        </div>
+        <table class="table table-bordered">
+            <tbody>
+                {% for item in printList %}
+                    <td>
+                        <b>{{item}}</b>
+                    </td>
+                    {% if loop.index is divisibleby(5) %}
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
 
         <form method="POST">
             {% if exhausted != True %}

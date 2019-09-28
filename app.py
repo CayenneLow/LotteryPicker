@@ -45,16 +45,16 @@ def display():
     if 'seen' not in session:
         session['seen'] = []     
     seenList = session.get('seen', None)
-    try:
-        if (bool(session.get('exhausted', None)) != True):
-            session['seen'] = RNG(min, max, nNums, seenList)
-            session['rolls'] += 1
-            if len(session.get('seen', None)) == max:
-                session['exhausted'] = True
-    except Exhausted as e:
-        session['exhausted'] = True
-    indexToStartOutputting = len(seenList) - nNums
-    return render_template('display.html', printList=seenList[indexToStartOutputting:len(seenList)], exhausted=bool(session.get('exhausted', None)), nNums=nNums, rolls=session.get('rolls',None))
+    newNumbers=[]
+    if (bool(session.get('exhausted', None)) != True):
+        newNumbers = RNG(min, max, nNums, seenList)
+        for num in newNumbers:
+            seenList.append(num)
+        session['seen'] = seenList
+        session['rolls'] += 1
+        if len(session.get('seen', None)) == max:
+            session['exhausted'] = True
+    return render_template('display.html', printList=newNumbers, exhausted=bool(session.get('exhausted', None)), nNums=nNums, rolls=session.get('rolls',None))
 
     
 
