@@ -18,7 +18,7 @@
 
         <div class="numbers">
             {% for item in printList %}
-                {{item}} ||
+                <b>{{item}}</b>
                 {% if loop.index % nNums == 0 %}
                     <hr> 
                 {% endif %} 
@@ -27,9 +27,9 @@
 
         <form method="POST">
             {% if exhausted != True %}
-                <input type="submit" id="again" name="button" value="Again?" />
+                <input class="btn btn-primary" type="submit" id="again" name="button" value="Again?" />
             {% endif %}
-            <input type="submit" name="button" value="Go Back" />
+            <input class="btn btn-primary" type="submit" name="button" value="Go Back" />
         </form>
 
         {% if exhausted == True %}
