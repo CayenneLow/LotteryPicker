@@ -1,12 +1,10 @@
 import random
 
 class Error(Exception):
-    def __init__(self, error):
-        super().__init__(error)
+    pass
 
-class Exhausted(Exception):
-    def __init__(self, error):
-        super().__init__(error) 
+class Exhausted(Error):
+    pass
 
 def RNG(min, max, nNum, seen):
     checks(min,max,nNum)
@@ -14,7 +12,7 @@ def RNG(min, max, nNum, seen):
     for x in range(nNum):
         # no other numbers to pick from
         if len(seen) >= max-min+1:
-            raise Exhausted("All numbers Exhausted")
+            raise Exhausted
             break
         returnList = seen
         # keep looping if it's a duplicate number
