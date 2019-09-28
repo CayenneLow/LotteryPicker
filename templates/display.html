@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html>
-	<head>
-        <meta charset="utf-8" />
-		<title>Display</title>
-	</head>
-            {% extends "bootstrap/base.html" %}
-	<body>
-            {% block content %}
-            <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-                <h1 class="display-4">Numbers</h1>
-                <h3> Press Enter to generate more numbers </h3>
 
-                {% for item in printList %}
-                    <br>
-                    <h1>{{item}}</h1>
-                    <br>
-                    {% if loop.index % nNums == 0 %}
-                        <hr>
-                    {% endif %}
-                {% endfor %}
+<head>
+    <meta charset="utf-8" />
+    <title>Display</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 
-                <form method="POST">
-                    <input type="submit" id="again" name="button" value="Again?"/>
-                    <input type="submit" name="button" value="Go Back"/>
-                </form>
+</head>
+{% extends "bootstrap/base.html" %}
 
-                {% if exhausted == True %}
-                <h3> All numbers have been generated </h3>
-                {% endif %}
-            </div>
-            {% endblock %}
+<body>
+    {% block content %}
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">Numbers</h1>
+        <h3> Press Enter to generate more numbers </h3>
 
-            {% block scripts %}
-            <script>
-                document.onkeyup = function(e) {
-                    if (e.which == 13 || e.keycode == 18) {
-                        document.getElementById("again").click();
-                    }
-                };
-            </script>
-            {{super()}}
-            {% endblock %}
-        </body>
+        <div class="numbers">
+            {% for item in printList %}
+                {{item}} ||
+                {% if loop.index % nNums == 0 %}
+                    <hr> 
+                {% endif %} 
+            {% endfor %}
+        </div>
+
+        <form method="POST">
+            <input type="submit" id="again" name="button" value="Again?" />
+            <input type="submit" name="button" value="Go Back" />
+        </form>
+
+        {% if exhausted == True %}
+        <h3> All numbers have been generated </h3>
+        {% endif %}
+    </div>
+    {% endblock %} {% block scripts %}
+    <script>
+        document.onkeyup = function(e) {
+            if (e.which == 13 || e.keycode == 18) {
+                document.getElementById("again").click();
+            }
+        };
+    </script>
+    {{super()}} {% endblock %}
+</body>
+
 </html>
