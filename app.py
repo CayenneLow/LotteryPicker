@@ -18,6 +18,8 @@ def index():
         session['min'] = min
         session['max'] = max
         session['nNums'] = nNums
+        session['rolls'] = 0
+        session['exhausted'] = False;
         try:
             checks(int(min), int(max), int(nNums))
         except Error as e:
@@ -43,14 +45,16 @@ def display():
     if 'seen' not in session:
         session['seen'] = []     
     seenList = session.get('seen', None)
-    exhausted = False
-    try:
-        session['seen'] = RNG(min, max, nNums, seenList)
-        print(session['seen'])
-    except Exhausted as e:
-        exhausted = True
-    indexToStartOutputting = len(seenList) - nNums
-    return render_template('display.html', printList=seenList[indexToStartOutputting:len(seenList)], exhausted=exhausted, nNums=nNums)
+    newNumbers=[]
+    if (bool(session.get('exhausted', None)) != True):
+        newNumbers = RNG(min, max, nNums, seenList)
+        for num in newNumbers:
+            seenList.append(num)
+        session['seen'] = seenList
+        session['rolls'] += 1
+        if len(session.get('seen', None)) == max:
+            session['exhausted'] = True
+    return render_template('display.html', printList=newNumbers, exhausted=bool(session.get('exhausted', None)), nNums=nNums, rolls=session.get('rolls',None))
 
     
 

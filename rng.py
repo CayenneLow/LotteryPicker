@@ -9,16 +9,15 @@ class Exhausted(Error):
 def RNG(min, max, nNum, seen):
     checks(min,max,nNum)
     # main logic
+    returnList = []
     for x in range(nNum):
         # no other numbers to pick from
-        if len(seen) >= max-min+1:
-            raise Exhausted
+        if len(seen) >= max-min+1 or len(seen) + len(returnList) >= max-min+1:
             break
-        returnList = seen
         # keep looping if it's a duplicate number
         while (1):
             num = random.randint(min, max)
-            if num in returnList:
+            if num in seen or num in returnList:
                 exist = True
             else:
                 exist = False
