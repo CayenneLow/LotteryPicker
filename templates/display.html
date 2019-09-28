@@ -12,7 +12,8 @@
                 <h3> Press Enter to generate more numbers </h3>
 
                 {% for item in printList %}
-                    {{item}}
+                    <br>
+                    <h1>{{item}}</h1>
                     <br>
                     {% if loop.index % nNums == 0 %}
                         <hr>

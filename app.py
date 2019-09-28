@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from flask import Flask, redirect, render_template, request, session, url_for
 from flask_bootstrap import Bootstrap
 import random
@@ -40,15 +41,16 @@ def display():
     max = int(session.get('max', None))
     nNums = int(session.get('nNums', None))
     if 'seen' not in session:
-        print("yes")
         session['seen'] = []     
     seenList = session.get('seen', None)
     exhausted = False
     try:
         session['seen'] = RNG(min, max, nNums, seenList)
+        print(session['seen'])
     except Exhausted as e:
         exhausted = True
-    return render_template('display.html', printList=seenList, exhausted=exhausted, nNums=nNums)
+    indexToStartOutputting = len(seenList) - nNums
+    return render_template('display.html', printList=seenList[indexToStartOutputting:len(seenList)], exhausted=exhausted, nNums=nNums)
 
     
 
