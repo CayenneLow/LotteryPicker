@@ -73,16 +73,16 @@ def history():
 def save():
     fileName = "Lucky Draw " +  str(datetime.datetime.now())
     print(fileName)
-    with open("numSaves/"+fileName+".txt", 'w') as f:
+    with open("numSaves/"+fileName+".csv", 'w') as f:
         index = 0
         for roll in session.get('seen', None):
             index += 1
             f.write("Roll " + str(index) + "\n")
             for num in roll:
-                f.write(str(num) + "  ")
+                f.write(str(num) + ",")
             f.write("\n")
     savesDir = os.path.join(os.path.dirname(__file__), "numSaves")
     print(savesDir)
-    return send_from_directory(directory=savesDir, filename=fileName + ".txt", as_attachment=True)
+    return send_from_directory(directory=savesDir, filename=fileName + ".csv", as_attachment=True)
 if __name__ == '__main__':
     app.run(debug=True, port=4000)
