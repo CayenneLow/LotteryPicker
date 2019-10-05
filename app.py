@@ -44,7 +44,7 @@ def roll():
 def display():
     if request.method == 'POST':
         if request.form['button'] == 'Again?':
-            return redirect(url_for('roll'))
+            return redirect(url_for('beforeRoll'))
         if request.form['button'] == 'View History':
             return redirect(url_for('history'))
         else:
