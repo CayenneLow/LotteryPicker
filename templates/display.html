@@ -13,14 +13,13 @@
     {% block content %}
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
         <h1 class="display-4">Numbers</h1>
-        <h2 class="display-3">Roll {{rolls}}</h2>
         <h3> Press Enter to generate more numbers </h3>
 
         <table class="table table-bordered">
             <tbody>
                 {% for item in printList %}
                     <td>
-                        <b>{{item}}</b>
+                        <i style="font-size:15px">{{loop.index}})  </i><b>{{item}}</b>
                     </td>
                     {% if loop.index is divisibleby(5) %}
                         </tr>
@@ -33,7 +32,8 @@
             {% if exhausted != True %}
                 <input class="btn btn-primary" type="submit" id="again" name="button" value="Again?" />
             {% endif %}
-            <input class="btn btn-primary" type="submit" name="button" value="Go Back" />
+            <input class="btn btn-primary" type="submit" name="button" value="Start a new Roll" />
+            <input class="btn btn-primary" type="submit" name="button" value="View History" />
         </form>
 
         {% if exhausted == True %}
