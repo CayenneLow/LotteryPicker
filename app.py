@@ -78,8 +78,10 @@ def save():
         for roll in session.get('seen', None):
             index += 1
             f.write("Roll " + str(index) + "\n")
+            subIndex = 0
             for num in roll:
-                f.write(str(num) + ",")
+                subIndex += 1
+                f.write(str(subIndex) + ") " + str(num) + ",")
             f.write("\n")
     savesDir = os.path.join(os.path.dirname(__file__), "numSaves")
     print(savesDir)
