@@ -19,7 +19,9 @@
             <table class="table table-bordered">
                 <tbody>
                     {% for num in roll %}
-                    <td><b>{{num}}</b></td>
+                    <td>
+                        <i style="font-size:15px">{{loop.index}}) </i><b>{{num}}</b>
+                    </td>
                     {% if loop.index is divisibleby(5) %}
                 </tr>
                 {% endif %}
