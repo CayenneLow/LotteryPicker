@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from flask import Flask, redirect, render_template, request, session, url_for, send_from_directory
+from flask import Flask, flash, redirect, render_template, request, session, url_for, send_from_directory
 import random
 import os
 import datetime
@@ -10,18 +10,22 @@ app.secret_key='very-secret-123'
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    # taking flash messages and putting it back
+    flashMessages = session.get("_flashes", None)
     session.clear()
+    if flashMessages is not None:
+        session['_flashes'] = flashMessages
     if request.method == 'POST':
         # initialize
         session['min'] = request.form['min']
         session['max'] = request.form['max']
         session['seen'] = []     
         session['exhausted'] = False
-        return redirect(url_for('beforeRoll'))
+        return redirect(url_for('preRoll'))
     return render_template('index.html', error=None)
 
 @app.route('/preRoll/', methods=['GET', 'POST'])
-def beforeRoll():
+def preRoll():
     if session.get('min', None) is None:
         return redirect(url_for('index'))
     if request.method == 'POST':
@@ -42,8 +46,10 @@ def roll():
     try:
         newNumbers = RNG(min, max, nNum, seenList)
     except NegativeNNum as err:
+        flash('Only positive numbers are allowed')
         return redirect(url_for('preRoll'))
     except InvalidRange as err:
+        flash('Please input a valid min-max range')
         return redirect(url_for('index'))
 
     session['newNumbers'] = newNumbers
@@ -56,7 +62,7 @@ def display():
     try:
         if request.method == 'POST':
             if request.form['button'] == 'Again?':
-                return redirect(url_for('beforeRoll'))
+                return redirect(url_for('preRoll'))
             if request.form['button'] == 'View History':
                 return redirect(url_for('history'))
             else:

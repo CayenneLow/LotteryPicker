@@ -10,12 +10,23 @@
   <body>
       <div class="container">
         {% block content %}
-            <div class ="row">
-                <div class="col-9"></div>
-                <div class="col-3">
-                    <a href="{{url_for('index')}}"><img class="logo" src="{{url_for('static', filename='TUCLogo.jpg')}}"/></a>
+        <div class ="row">
+          <div class="col-9"></div>
+          <div class="col-3">
+            <a href="{{url_for('index')}}"><img class="logo" src="{{url_for('static', filename='TUCLogo.jpg')}}"/></a>
+          </div>
+        </div>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+              <div class="row">
+                <div class="col alert alert-danger">
+                  {% for message in messages %}
+                    {{ message }}
+                  {% endfor %}
                 </div>
-            </div>
+              </div>
+          {% endif %}
+        {% endwith %}
         {% endblock %}
     </div>
   </body>
