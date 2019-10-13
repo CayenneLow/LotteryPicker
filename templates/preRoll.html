@@ -4,14 +4,39 @@
 {% endblock %}
 {% block content %}
     {{super()}}
-    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <div class="row">
+        <div class="col">
+            Celebrating
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            20 years of Excellence
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            “Reminiscing the past, Building the future”
+        </div>
+    </div>
+    <div class="display-4 font-weight-normal">
         <h1 class="display-4">Lucky Number Generator</h1>
-
         <form method="POST">
-            <label for="nNum">How many numbers?</label>
-            <input type="number" name="nNum" autofocus required/>
-            <br>
-            <input class="btn btn-primary" type="submit" name="button" value="Submit" />
+            <div class="row">
+                <div class="col">
+                    <label for="nNum">How many numbers?</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <input class="form-control inputText" type="number" name="nNum" autofocus required/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input class="btn btn-primary" type="submit" name="button" value="Submit" />
+                </div>
+            </div>
         </form>
         {% if error != None %}
             <h3>{{error}}</h3>
