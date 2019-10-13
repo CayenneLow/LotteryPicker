@@ -36,7 +36,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/khye/Projects/Snippets/RNGForMum/venv"
+set -gx VIRTUAL_ENV "/mnt/c/Users/Khye/Projects/LotteryPicker/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

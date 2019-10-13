@@ -1,4 +1,4 @@
-#!/home/khye/Projects/Snippets/RNGForMum/venv/bin/python
+#!/mnt/c/Users/Khye/Projects/LotteryPicker/venv/bin/python
 
 import sys
 import getopt
