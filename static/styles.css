@@ -16,3 +16,7 @@ table {
 .inputText {
     font-size:32px;
 }
+
+.preRollHeader {
+    text-align: center;
+}
