@@ -1,4 +1,5 @@
 import random
+from errors import *
 
 def RNG(min, max, nNum, seen):
     checks(min,max,nNum)
@@ -29,8 +30,8 @@ def RNG(min, max, nNum, seen):
 
 def checks(min, max, nNum):
     # error handling
+    if (nNum <= 0):
+        raise NegativeNNum("nNumbers must be greater than 0")
     if (max < min or min < 1):
-        raise Error("Invalid Range")
-    elif (nNum > max - min + 1):
-        raise Error("Too many requested numbers")
+        raise InvalidRange("Invalid Range")
 

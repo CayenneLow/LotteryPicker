@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    {{super()}}
+    <div class="jumbotron preRollHeader">
+        <div class="display-3"> Oops! Something went wrong on our end </div>
+        <br>
+        <a href="{{url_for('index')}}"> Go back to home </a>
+        
+    </div>
+{% endblock %}

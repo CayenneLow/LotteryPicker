@@ -4,7 +4,19 @@
     word-spacing:20px;
 }
 
+#footer {
+    align-content: center;
+}
+
 table {
     font-size:20px;
+    text-align: center;
+}
+
+.inputText {
+    font-size:32px;
+}
+
+.preRollHeader {
     text-align: center;
 }

@@ -1,26 +1,51 @@
-<!DOCTYPE html>
-<html>
-	<head>
-        <meta charset="utf-8" />
-		<title>Index</title>
-	</head>
-            {% extends "bootstrap/base.html" %}
-	<body>
-            {% block content %}
-            <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-                <h1 class="display-4">Lucky Number Generator</h1>
-
-                <form method="POST">
-                    <label for="nNum">How many numbers?</label>
-                    <input type="number" name="nNum" autofocus required/>
-                    <br>
-                    <input class="btn btn-primary" type="submit" name="button" value="Submit" />
-                </form>
-                {% if error != None %}
-                    <h3>{{error}}</h3>
-                {% endif %}
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    {{super()}}
+    <div class="jumbotron preRollHeader">
+        <div class="row">
+            <div class="col">
+                <div class="display-4">
+                    Celebrating
+                </div>
             </div>
-            {% endblock %}
-
-        </body>
-</html>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="display-3">
+                    <b><font color="#d1c564">20 years of Excellence</font></b>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3><i>“Reminiscing the past, Building the future”</i></h3>
+            </div>
+        </div>
+    </div>
+    <div class="display-4 font-weight-normal">
+        <h1 class="display-4">Lucky Number Generator</h1>
+        <form method="POST">
+            <div class="row">
+                <div class="col">
+                    <label for="nNum">How many numbers?</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <input class="form-control inputText" type="number" name="nNum" autofocus required/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input class="btn btn-primary" type="submit" name="button" value="Submit" />
+                </div>
+            </div>
+        </form>
+        {% if error != None %}
+            <h3>{{error}}</h3>
+        {% endif %}
+    </div>
+{% endblock %}
