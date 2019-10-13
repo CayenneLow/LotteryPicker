@@ -4,6 +4,10 @@
     word-spacing:20px;
 }
 
+#footer {
+    align-content: center;
+}
+
 table {
     font-size:20px;
     text-align: center;
