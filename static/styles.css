@@ -10,6 +10,8 @@ a {
 
 .btn {
     background-color: rgb(247, 211, 101);
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .btn-danger {
