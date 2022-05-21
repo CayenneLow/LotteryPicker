@@ -8,6 +8,14 @@ a {
     text-decoration: none; /* no underline */
 }
 
+.btn {
+    background-color: rgb(247, 211, 101);
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
 .numbers {
     display: inline-block;
     font-size:25px;
@@ -21,6 +29,12 @@ a {
 table {
     font-size:20px;
     text-align: center;
+    color:white !important;
+}
+
+.header {
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
 }
 
 .inputText {
