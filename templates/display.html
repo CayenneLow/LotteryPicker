@@ -6,7 +6,11 @@
     {{super()}}
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
         <h1 class="display-4">Numbers</h1>
+        {% if exhausted == True %}
+        <h3> All numbers have been generated </h3>
+        {% else %}
         <h3> Press Enter to generate more numbers </h3>
+        {% endif %}
 
         <table class="table table-bordered">
             <tbody>
@@ -21,17 +25,14 @@
             </tbody>
         </table>
 
-        <form method="POST">
+        <form method="POST" class="mt-5">
             {% if exhausted != True %}
-                <input class="btn btn-primary" type="submit" id="again" name="button" value="Again?" />
+                <input class="btn " type="submit" id="again" name="button" value="Again?" />
             {% endif %}
-            <input class="btn btn-primary" type="submit" name="button" value="Start a new Roll" />
-            <input class="btn btn-primary" type="submit" name="button" value="View History" />
+            <input class="btn " type="submit" name="button" value="View History" />
+            <input class="btn btn-danger" type="submit" name="button" value="Start a new Roll" onclick="return confirm('Start a new roll? (THIS WILL DELETE ALL HISTORY OF THE CURRENT ROLL)')"/>
         </form>
 
-        {% if exhausted == True %}
-        <h3> All numbers have been generated </h3>
-        {% endif %}
     </div>
     {% endblock %} 
 {% block scripts %}
