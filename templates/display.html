@@ -26,7 +26,7 @@
                 <input class="btn " type="submit" id="again" name="button" value="Again?" />
             {% endif %}
             <input class="btn " type="submit" name="button" value="View History" />
-            <input class="btn btn-danger" type="submit" name="button" value="Start a new Roll" />
+            <input class="btn btn-danger" type="submit" name="button" value="Start a new Roll" onclick="return confirm('Start a new roll? (THIS WILL DELETE ALL HISTORY OF THE CURRENT ROLL)')"/>
         </form>
 
         {% if exhausted == True %}
